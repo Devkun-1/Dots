@@ -1,4 +1,4 @@
-# Dotfiles
+# Screenshot
 <img src="images/2026-06-03_19-24-42.png"/>
 
 ## System Information 
@@ -9,7 +9,26 @@
 | Display Server | X11 |
 | WM | Monsterwm |
 | Terminal | Alacritty |
+| Editor   | Neovim, Vim, Vi |
+| Shell    | Zsh |
+| Launcher | Dmenu |
+| Font     | JetBrains Mono Nerd Font |
 
+## Keybindings
+
+| Key | Action |
+|------|---------|
+| Super + Enter | Open Terminal |
+| Super + d | Launcher  |
+| Super + e | Thunar  |
+| Super + q | Close Window |
+| Super + h/l | Focus Window |
+| Super + Shift + q | Pkill Monster |
+| Super + Shift + h/l | Resize Window Right/Left |
+| Super + Shift + j/k | Resize Window Up/Down |
+| Print | Screenshot Full |
+| Shift + Print | sele Screenshot |
+| Shift + 1-9   | DESKTOPCHANGEe |
 
 
 # Install Package
