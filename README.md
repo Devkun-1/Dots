@@ -15,8 +15,8 @@
 
 | Component         | Value                                                                 | 
 | ----------------- | ------------------------------------------------------------------ |
-| OS | Arch Linux |
-| Display Server | X11, [Wayland](https://wayland.freedesktop.org/) |
+| OS | [Arch Linux](https://archlinux.org/) |
+| Display Server | [X11](https://www.x.org/wiki/?__goaway_challenge=meta-refresh&__goaway_id=823acb2db8759d4e469322238272bb0e&__goaway_referer=https%3A%2F%2Fwww.google.com%2F), [Wayland](https://wayland.freedesktop.org/) |
 | WM | [Monsterwm](https://github.com/c00kiemon5ter/monsterwm), [Dwm](https://dwm.suckless.org/), [Dwl](https://github.com/djpohly/dwl) |
 | Terminal | [Alacritty](https://alacritty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/conf/) |
 | Editor   | [Neovim](https://neovim.io/), [Vim](https://www.vim.org/),  |
@@ -24,7 +24,7 @@
 | Launcher | [Dmenu](https://tools.suckless.org/dmenu/), [Wmenu](https://codeberg.org/adnano/wmenu) |
 | Launcher | [Thuanr](https://docs.xfce.org/xfce/thunar/start) |
 | Font     | JetBrains Mono Nerd Font |
-| Package Manager   | pacman, yay |
+| Package Manager   | [pacman](https://wiki.archlinux.org/title/Pacman), [yay](https://wiki.archlinux.org/title/Arch_User_Repository) |
 
 ## Keybindings
 
