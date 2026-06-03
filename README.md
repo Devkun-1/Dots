@@ -17,11 +17,11 @@
 | ----------------- | ------------------------------------------------------------------ |
 | OS | Arch Linux |
 | Display Server | X11, Wayland |
-| WM | Monsterwm, Dwm, Dwl |
-| Terminal | Alacritty, Kitty |
-| Editor   | Neovim, Vim, Vi |
-| Shell    | Zsh |
-| Launcher | Dmenu, Wmenu |
+| WM | Monsterwm, [Dwm](https://dwm.suckless.org/), [Dwl](https://github.com/djpohly/dwl) |
+| Terminal | [Alacritty], [Kitty] |
+| Editor   | [Neovim](https://neovim.io/), [Vim](https://www.vim.org/),  |
+| Shell    | [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) |
+| Launcher | [Dmenu](https://tools.suckless.org/dmenu/), [Wmenu](https://codeberg.org/adnano/wmenu) |
 | Font     | JetBrains Mono Nerd Font |
 | Package Manager   | pacman, yay |
 
