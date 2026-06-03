@@ -65,6 +65,7 @@ mv ~/.xinitrc ~/.xinitrc.bak 2>/dev/null
 cp -rv .config/* ~/.config
 cp -rv .zshrc ~/.zshrc
 cp -rv .xinitrc ~/.xinitrc
+cp -rv Pictures/* ~/Pictures/
 ```
 
 ## Installation yay
@@ -79,7 +80,7 @@ makepkg -si
 ### Base Development
 ```bash
 sudo pacman -S --needed \
-    base-devel git gcc clang cmake
+    base-devel git gcc clang cmake unzip 
 ```
 
 ### Terminal & Tools
