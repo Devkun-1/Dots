@@ -1,18 +1,26 @@
 # Screenshot
 <img src="images/2026-06-03_19-24-42.png"/>
 
+# Monster
+<img src="images/2026-06-03_22-22-30.png"/>
+
+# Neovim
+<img src="images/2026-06-03_22-13-25.png"/>
+
+
 ## System Information 
 
 | Component         | Value                                                                 | 
 | ----------------- | ------------------------------------------------------------------ |
 | OS | Arch Linux |
-| Display Server | X11 |
-| WM | Monsterwm |
-| Terminal | Alacritty |
+| Display Server | X11, Wayland |
+| WM | Monsterwm, Dwm, Dwl |
+| Terminal | Alacritty, Kitty |
 | Editor   | Neovim, Vim, Vi |
 | Shell    | Zsh |
-| Launcher | Dmenu |
+| Launcher | Dmenu, Wmenu |
 | Font     | JetBrains Mono Nerd Font |
+| Package Manager   | pacman, yay |
 
 ## Keybindings
 
@@ -30,30 +38,102 @@
 | Shift + Print | sele Screenshot |
 | Shift + 1-9   | DESKTOPCHANGEe |
 
-
-# Install Package
+## Installation
 ```bash
-sudo pacman -S fd git gcc cmake clang  base-devel fontconfig gtk-3.0 thunar alacritty kitty tmux fzf nvim vi vim xorg-server xorg-xinit xorg-xrandr xorg-setxkbmap wayland wayland-protocols pipewire pipewire-jack pipewire-audio pipewire-alsa pipewire-pulse mpv
+git clone https://github.com/kun20101922/Dotfiles.git
+cd Dotfiles
+
+# Backup existing files
+mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
+mv ~/.xinitrc ~/.xinitrc.bak 2>/dev/null
+
+# Copy Configuration
+cp -rv .config/* ~/.config
+cp -rv .zshrc ~/.zshrc
+cp -rv .xinitrc ~/.xinitrc
 ```
 
-# Install yay 
+## Installation yay
 ```bash
 git clone https://aur.archlinux.org/yay.git
-cd yay 
+cd yay
 makepkg -si
 ```
 
-# Yay Install Package
-```bash
-yay -S gvfs adobe-source-code-pro-fontsnoto-fonts-emojiotf-font-awesomettf-droidttf-fira-codettf-fantasque-nerdttf-jetbrains-monottf-jetbrains-mono-nerdttf-victor-mononoto-fonts brave-bin ttf-victor-mono wlroots-asan-git-debug thunar-archive-plugin thunar-bolman uzip udisk yt-dlp 
+## Dependencies
 
+### Base Development
+```bash
+sudo pacman -S --needed \
+    base-devel git gcc clang cmake
 ```
 
-# Installation
+### Terminal & Tools
 ```bash
- git clone https://github.com/kun20101922/Dotfiles.git
- cd Dotfiles
- cp -r .config ~/.config
+sudo pacman -S --needed \
+   alacritty kitty tmux fzf fd vifm 
+```
+
+### Editors
+```bash
+sudo pacman -S --needed \
+   neovim vim vi  
+```
+
+### X11
+```bash
+sudo pacman -S --needed \
+    xorg-server xorg-xinit xorg-xranr xorg-setxkbmap
+```
+
+### Wayland
+```bash
+sudo pacman -S --needed \
+    wayland wayland-protocols
+```
+
+### Wallpaper
+```bash
+sudo pacman -S --needed \
+    feh
+```
+
+### Audio
+```bash
+sudo pacman -S --needed \
+    pipewire pipewire-alsa pipewire-pulse pipewire-jack
+```
+
+### Files Manager
+```bash
+sudo pacman -S --needed \
+    thuar 
+```
+
+### Media
+```bash
+sudo pacman -S --needed \
+    mpv yt-dlp ytfzf 
+```
+
+### Media
+```bash
+sudo pacman -S --needed \
+    mpv yt-dlp ytfzf 
+```
+
+### Fonts
+```bash
+yay -S \
+    adobe-source-code-pro-fonts \
+    noto-fonts-emoji \
+    otf-font-awesome \
+    ttf-droid \
+    ttf-fira-code \
+    ttf-jetbrains-mono \
+    ttf-jetbrains-mono-nerd \
+    ttf-victor-mono \
+    brave-bin \
 ```
 
 
