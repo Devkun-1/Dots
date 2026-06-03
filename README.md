@@ -1,5 +1,5 @@
 # Dotfiles
-<img src="images/scrn-20260523-193341.png"/>
+<img src="images/2026-06-03_19-24-42.png"/>
 
 # Install Package
 ```bash
