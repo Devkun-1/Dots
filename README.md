@@ -7,6 +7,9 @@
 # Neovim
 <img src="images/2026-06-03_22-13-25.png"/>
 
+# Terminal Tmux
+<img src="images/2026-06-03_22-42-38.png"/>
+
 
 ## System Information 
 
@@ -37,6 +40,16 @@
 | Print | Screenshot Full |
 | Shift + Print | sele Screenshot |
 | Shift + 1-9   | DESKTOPCHANGEe |
+
+## Features
+
+- Minimal MonsterWM workflow
+- Keyboard-driven navigation
+- Fastfetch integration
+- Neovim-centric development setup
+- Alacritty terminal
+- MPV media integration
+- Lightweight and low resource usage
 
 ## Installation
 ```bash
