@@ -1,9 +1,9 @@
 # Dotfiles
 <img src="images/2026-06-03_19-24-42.png"/>
 
-## Color Reference
+## System Information 
 
-| Color             | Hex                                                                |
+| Component         | Value                                                                 | 
 | ----------------- | ------------------------------------------------------------------ |
 | OS | Arch Linux |
 | Display Server | X11 |
