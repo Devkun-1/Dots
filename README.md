@@ -1,6 +1,17 @@
 # Dotfiles
 <img src="images/2026-06-03_19-24-42.png"/>
 
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| OS | Arch Linux |
+| Display Server | X11 |
+| WM | Monsterwm |
+| Terminal | Alacritty |
+
+
+
 # Install Package
 ```bash
 sudo pacman -S fd git gcc cmake clang  base-devel fontconfig gtk-3.0 thunar alacritty kitty tmux fzf nvim vi vim xorg-server xorg-xinit xorg-xrandr xorg-setxkbmap wayland wayland-protocols pipewire pipewire-jack pipewire-audio pipewire-alsa pipewire-pulse mpv
