@@ -28,7 +28,5 @@ source $HOME/.config/zsh/zsh-alias.zsh
 # source $HOME/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 
-exco "hello world"
-
 
 
