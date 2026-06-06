@@ -4,6 +4,7 @@ require("config.vscode") -- vscode
 require("config.api") -- api
 require("lazy.lazy")  -- lazy
 
+
 -- colorbuddy setup
 local colorbuddy = require('colorbuddy')
 local colors = colorbuddy.colors

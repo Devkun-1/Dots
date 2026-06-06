@@ -19,7 +19,7 @@ vim.o.guicursor = ""
 vim.o.encoding = "utf-8"
 vim.o.laststatus = 0
 
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 
 vim.opt.shortmess:append("I")
 

@@ -48,7 +48,6 @@ return {
 				scrolloff = 10,
 				auto_show_delay_ms = 100,
 				min_width = 40,
-				winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:None,Search:None',
 				max_height = 50,
 				draw = {
 					padding = 2,

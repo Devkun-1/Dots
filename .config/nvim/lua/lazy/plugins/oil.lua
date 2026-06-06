@@ -9,10 +9,10 @@ return {
 	-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 	lazy = false,
 	config = function ()
-		require('oil').setup({
+		require("oil").setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 			-- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
-			default_file_explorer = true,
+			default_file_explorer = false,
 			-- Id is automatically added at the beginning, and name at the end
 			-- See :help oil-columns
 			columns = {
@@ -90,7 +90,7 @@ return {
 			use_default_keymaps = true,
 			view_options = {
 				-- Show files and directories that start with "."
-				show_hidden = false,
+				show_hidden = true,
 				-- This function defines what is considered a "hidden" file
 				is_hidden_file = function(name, bufnr)
 					local m = name:match("^%.")
