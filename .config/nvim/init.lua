@@ -4,7 +4,6 @@ require("config.vscode") -- vscode
 require("config.api") -- api
 require("lazy.lazy")  -- lazy
 
-
 -- colorbuddy setup
 local colorbuddy = require('colorbuddy')
 local colors = colorbuddy.colors
@@ -18,4 +17,6 @@ Group.new('Visual', colors.none, colors.base03, styles.reverse)
 local test = "hello neovim"
 
 print(test)
+
+
 
