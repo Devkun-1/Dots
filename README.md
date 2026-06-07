@@ -1,4 +1,4 @@
-# Screenshot
+# Screenshot X11
 <img src="images/2026-06-03_19-24-42.png"/>
 
 # Monster
@@ -10,6 +10,17 @@
 # Terminal Tmux
 <img src="images/2026-06-03_22-42-38.png"/>
 
+# Screenshot Wayland
+<img src"images/screenshot.png" />
+
+# Dwl 
+<img src="images/dwl.png" />
+
+# Neovim 
+<img src="images/neovim.png"/>
+
+# Terminal And Tmux
+<img src="images/alacritty_tmux.png"/>
 
 ## System Information 
 
