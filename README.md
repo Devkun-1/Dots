@@ -1,15 +1,3 @@
-# Screenshot X11
-<img src="images/2026-06-03_19-24-42.png"/>
-
-# Monster
-<img src="images/2026-06-03_22-22-30.png"/>
-
-# Neovim
-<img src="images/2026-06-03_22-13-25.png"/>
-
-# Terminal Tmux
-<img src="images/2026-06-03_22-42-38.png"/>
-
 # Screenshot Wayland
 <img src"images/screenshot.png" />
 
