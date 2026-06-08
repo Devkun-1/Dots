@@ -27,8 +27,8 @@
 | Component         | Value                                                                 | 
 | ----------------- | ------------------------------------------------------------------ |
 | OS | [Arch Linux](https://archlinux.org/) |
-| Display Server | [X11](https://www.x.org/wiki/?__goaway_challenge=meta-refresh&__goaway_id=823acb2db8759d4e469322238272bb0e&__goaway_referer=https%3A%2F%2Fwww.google.com%2F), [Wayland](https://wayland.freedesktop.org/) |
-| WM | [Monsterwm](https://github.com/c00kiemon5ter/monsterwm), [Dwm](https://dwm.suckless.org/), [Dwl](https://github.com/djpohly/dwl) |
+| Display Server | [Wayland](https://wayland.freedesktop.org/) |
+| WM |  [Dwl](https://github.com/djpohly/dwl) |
 | Terminal | [Alacritty](https://alacritty.org/), [Kitty](https://sw.kovidgoyal.net/kitty/conf/) |
 | Editor   | [Neovim](https://neovim.io/), [Vim](https://www.vim.org/),  |
 | Shell    | [Zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) |
@@ -70,12 +70,10 @@ cd Dotfiles
 
 # Backup existing files
 mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
-mv ~/.xinitrc ~/.xinitrc.bak 2>/dev/null
 
 # Copy Configuration
 cp -rv .config/* ~/.config
 cp -rv .zshrc ~/.zshrc
-cp -rv .xinitrc ~/.xinitrc
 cp -rv Pictures/* ~/Pictures/
 ```
 
@@ -104,12 +102,6 @@ sudo pacman -S --needed \
 ```bash
 sudo pacman -S --needed \
    neovim vim vi  
-```
-
-### X11
-```bash
-sudo pacman -S --needed \
-    xorg-server xorg-xinit xorg-xranr xorg-setxkbmap
 ```
 
 ### Wayland
