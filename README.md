@@ -74,7 +74,7 @@ makepkg -si
 
 ## Dependencies
 
-## Installation
+### Installation
 ```bash
 sudo pacman -S --needed \
  base-devel git gcc clang cmake unzip alacritty kitty tmux fzf fd vifm pipewire neovim vim vi wayland 
