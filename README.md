@@ -78,7 +78,7 @@ makepkg -si
 ```bash
 sudo pacman -S --needed \
  base-devel git gcc clang cmake unzip alacritty kitty tmux fzf fd vifm pipewire neovim vim vi wayland 
- wayland-protocols swaybg thunar pipewire-alsa pipewire-pulse pipewire-jack 
+ wayland-protocols swaybg thunar pipewire-alsa pipewire-pulse pipewire-jack clang
 ```
 
 ### Base Development
@@ -148,9 +148,3 @@ yay -S \
     ttf-victor-mono \
     brave-bin \
 ```
-
-# Install additional
-
-
-
-
