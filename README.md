@@ -1,5 +1,5 @@
 # Screenshot Wayland
-<img src"images/screenshot.png" />
+<img src"images/screenshot.png"/>
 
 # Dwl 
 <img src="images/dwl.png" />
