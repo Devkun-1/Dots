@@ -1,39 +1,26 @@
--- oil 
-vim.keymap.set('n', '<leader>e', '<cmd> Oil <cr>')
+local keymap = vim.keymap.set
+
+--- oil
+keymap("n", "<leader>e", "<cmd>Oil<cr>")
 
 -- telescope
--- vim.keymap.set('n', '<leader>ff', '<cmd> Telescope find_files <cr>')
--- vim.keymap.set('n', '<leader>fb', '<cmd> Telescope buffers <cr>')
--- vim.keymap.set('n', '<leader>fc', '<cmd> Telescope colorscheme <cr>')
---
---- window
-vim.keymap.set('n', 'sv', '<cmd> vsplit <cr>') -- vsplit 
-vim.keymap.set('n', 'ss', '<cmd> split <cr>') -- split
+keymap("n", "<leader>ff", "<cmd> Telescope  find_files <cr>")
 
--- buuffers line
-vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+-- split window 
+keymap("n", "sv", "<cmd> vsplit <cr>")
+keymap("n", "ss", "<cmd> split <cr>")
 
--- Lazy
-vim.keymap.set("n", "<leader>l", "<cmd> Lazy <cr>")
+-- Navigate to previous/next buffer
+keymap('n', '<S-h>', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Cycle to previous buffer' })
+keymap('n', '<S-l>', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Cycle to next buffer' })
 
--- move to window 
-vim.keymap.set("n", "<C-l>", "<C-w>l>")
-vim.keymap.set("n", "<C-h>", "<C-w>h>")
-vim.keymap.set("n", "<C-k>", "<C-w>k>")
-vim.keymap.set("n", "<C-j>", "<C-w>j>")
+-- neotree
+keymap('n', '<leader>no', '<cmd> Neotree toggle right<cr>')
 
--- open terminal 
-vim.keymap.set("n", "<leader>ft", "<cmd> FloatTerm <cr>")
-
--- quick files 
-vim.keymap.set("n", "<leader>Q", "<cmd> QuickSwitch <cr>" )
-
--- fzf key
-vim.keymap.set("n", "<leader>ff", "<cmd> FzfLua files<cr>")
-
--- vColor
-vim.keymap.set("n", "<leader>vc", "<cmd> VCoolor <cr>")
-
+-- move window
+keymap("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+keymap("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+keymap("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+keymap("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 
