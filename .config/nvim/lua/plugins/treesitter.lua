@@ -1,39 +1,71 @@
 local MiniDeps = require("mini.deps")
+local add, now = MiniDeps.add, MiniDeps.now
 
-MiniDeps.add({
-source = "nvim-treesitter/nvim-treesitter",
-checkout = "master",
+now(function()
+  add({
+    source = "nvim-treesitter/nvim-treesitter",
+    checkout = "master",
+    hooks = {
+      post_install = function()
+        vim.cmd("TSUpdate")
+      end,
+      post_checkout = function()
+        vim.cmd("TSUpdate")
+      end,
+    },
+  })
+end)
 
-hooks = {
-post_install = function() vim.cmd("TSUpdate") end,
-post_checkout = function() vim.cmd("TSUpdate") end,
-},
+now(function()
+  add({
+    source = "windwp/nvim-ts-autotag",
+  })
+end)
+
+local configs = require("nvim-treesitter")
+configs.setup({
+  ensure_installed = {
+    "json",
+    "javascript",
+    "typescript",
+    "tsx",
+    "go",
+    "yaml",
+    "html",
+    "css",
+    "python",
+    "http",
+    "prisma",
+    "svelte",
+    "graphql",
+    "bash",
+    "vim",
+    "dockerfile",
+    "gitignore",
+    "query",
+    "vimdoc",
+    "c",
+    "java",
+    "rust",
+    "ron",
+  },
+  auto_install = true,
+  highlight = {
+    enable = true,
+  },
 })
 
-local treesitter = require("nvim-treesitter")
-local ensure_installed = {
-"json", "javascript", "typescript", "tsx", "go", "yaml", "html", "css",
-"python", "http", "prisma", "svelte", "graphql", "bash", "vim",
-"dockerfile", "gitignore", "query", "vimdoc", "c", "java", "rust", "ron",
-}
-treesitter.install(ensure_installed)
-
-
-vim.api.nvim_create_autocmd("FileType", {
-pattern = "*",
-callback = function(args)
-local buf = args.buf
-local ft = vim.bo[buf].filetype
-local lang = vim.treesitter.language.get_lang(ft)
-if not lang then return end
-
-pcall(vim.treesitter.start, buf, lang)
-
-if ft ~= "yaml" and ft ~= "markdown" then
-vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-vim.bo[buf].smartindent = false
-vim.bo[buf].cindent = false
-end
-end,
+require("nvim-ts-autotag").setup({
+  opts = {
+    enable_close = true,
+    enable_rename = true,
+    enable_close_on_slash = true,
+  },
+  per_filetype = {
+    ["html"] = {
+      enable_close = true,
+      enable_rename = true,
+      enable_close_on_slash = true,
+    },
+  },
 })
-

@@ -1,23 +1,26 @@
 -- Clone 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
-local path_package = vim.fn.stdpath('data') .. '/site/'
-local mini_path = path_package .. 'pack/deps/start/mini.nvim'
+local path_package = vim.fn.stdpath("data") .. "/site/"
+local mini_path = path_package .. "pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    'https://github.com/nvim-mini/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
+	vim.cmd('echo "Installing `mini.nvim`" | redraw')
+	local clone_cmd = {
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/nvim-mini/mini.nvim",
+		mini_path,
+	}
+	vim.fn.system(clone_cmd)
+	vim.cmd("packadd mini.nvim | helptags ALL")
+	vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
 
 -- Set up 'mini.deps' (customize to your liking)
-require('mini.deps').setup({ path = { package = path_package } })
-
+require("mini.deps").setup({ path = { package = path_package } })
 
 require("config.options")
 require("config.keymaps")
+require("config.autocmd")
 
 -- plugins
 require("plugins.oil")
@@ -31,14 +34,16 @@ require("plugins.snacks")
 require("plugins.statusline")
 require("plugins.icons")
 require("plugins.bufferlines")
-require("plugins.auto-pairs")
+require("plugins.minipairs")
 require("plugins.vcoolor")
 require("plugins.git-signs")
 require("plugins.nvim-highlight")
-require("plugins.nvim-ts-autotag")
 require("plugins.treesitter")
 require("plugins.neotree")
 require("plugins.colorbuddy")
+require("plugins.alpha")
+require("plugins.noice")
+require("plugins.conform")
+require("plugins.miniai")
 
-vim.cmd.colorscheme("vscode")
-
+vim.cmd.colorscheme("tokyonight")
