@@ -1,90 +1,82 @@
-local MiniDeps = require("mini.deps")
-local add = MiniDeps.add
-
--- 1. ติดตั้ง lazydev.nvim (เครื่องมือหลักในการดึง Type และ Module ของ Lua)
-add({
-	source = "folke/lazydev.nvim",
-})
-
-require("lazydev").setup({})
-
--- 2. ติดตั้ง nvim-cmp พร้อมลงทะเบียนแหล่งข้อมูล
-add({
-	source = "hrsh7th/nvim-cmp",
-	depends = {
+return {
+	"hrsh7th/nvim-cmp",
+	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
+		"folke/lazydev.nvim",
 	},
-})
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-local lspkind = require("lspkind")
-local auto_select = true
+	config = function()
+		local cmp = require("cmp")
+		local luasnip = require("luasnip")
+		local lspkind = require("lspkind")
+		local auto_select = true
 
-cmp.setup({
-	formatting = {
-		fields = { "abbr", "icon", "kind", "menu" },
-		format = lspkind.cmp_format({
-			maxwidth = {
-				menu = 50,
-				abbr = 50,
+		cmp.setup({
+			formatting = {
+				fields = { "abbr", "icon", "kind", "menu" },
+				format = lspkind.cmp_format({
+					maxwidth = {
+						menu = 50,
+						abbr = 50,
+					},
+					ellipsis_char = "...",
+					show_labelDetails = true,
+				}),
 			},
-			ellipsis_char = "...",
-			show_labelDetails = true,
-		}),
-	},
-	completion = {
-		completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
-	},
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	sources = cmp.config.sources({
-		{ name = "lazydev", group_index = 0 },
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{
-			name = "path",
-			option = {
-				trailing_slash = true,
-				label_trailing_slash = true,
+			completion = {
+				completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
 			},
-		},
-	}, {
-		{ name = "buffer" },
-	}),
-})
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
+			mapping = cmp.mapping.preset.insert({
+				["<C-n>"] = cmp.mapping.select_next_item(),
+				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+			}),
+			sources = cmp.config.sources({
+				{ name = "lazydev", group_index = 0 },
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{
+					name = "path",
+					option = {
+						trailing_slash = true,
+						label_trailing_slash = true,
+					},
+				},
+			}, {
+				{ name = "buffer" },
+			}),
+		})
+	end,
+}

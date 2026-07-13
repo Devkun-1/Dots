@@ -1,34 +1,84 @@
-local function add_theme(source, args)
-	args = args or {}
-	MiniDeps.add({
-		source = source,
+return {
+	--- catppuccin
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 		config = function()
-			local name = source:match("/_?([^.]+)"):gsub("%.nvim$", "")
-
-			if args.opts then
-				pcall(function()
-					require(name).setup(args.opts)
-				end)
-			end
-
-			if args.config then
-				args.config()
-			end
+			require("catppuccin").setup({
+				background = { -- :h background
+					light = "latte",
+					dark = "mocha",
+				},
+				transparent_background = true,
+			})
 		end,
-	})
-end
+	},
 
--- tokyonight
-add_theme("folke/tokyonight.nvim", {
-	config = function()
-		require("tokyonight").setup({
-			transparent = true,
-		})
-	end,
-})
+	-- tokyonight
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 
--- kanagawa
-add_theme("rebelot/kanagawa.nvim")
-
--- vscode
-add_theme("Mofiqul/vscode.nvim")
+	-- solarized-osaka
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("solarized-osaka").setup({
+				transparent = true,
+				terminal_colors = true,
+				styles = {
+					-- Style to be applied to different syntax groups
+					-- Value is any valid attr-list value for `:help nvim_set_hl`
+					comments = { italic = true },
+					keywords = { italic = false },
+					functions = {},
+					variables = {},
+					-- Background styles. Can be "dark", "transparent" or "normal"
+					sidebars = "dark", -- style for sidebars, see below
+					floats = "dark", -- style for floating windows
+				},
+				sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows
+				day_brightness = 0.3,
+				hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+				dim_inactive = false, -- dims inactive windows
+				lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+				on_highlights = function(hl, c)
+					local prompt = "#2d3149"
+					hl.TelescopeNormal = {
+						bg = c.bg_dark,
+						fg = c.fg_dark,
+					}
+					hl.TelescopeBorder = {
+						bg = c.bg_dark,
+						fg = c.bg_dark,
+					}
+					hl.TelescopePromptNormal = {
+						bg = c.bg_dark,
+					}
+					hl.TelescopePromptBorder = {
+						bg = c.bg_dark,
+						fg = c.bg_dark,
+					}
+					hl.TelescopePromptTitle = {
+						bg = prompt,
+						fg = "#2C94DD",
+					}
+					hl.TelescopePreviewTitle = {
+						bg = c.bg_dark,
+						fg = c.bg_dark,
+					}
+					hl.TelescopeResultsTitle = {
+						bg = c.bg_dark,
+						fg = c.bg_dark,
+					}
+				end,
+			})
+		end,
+	},
+}

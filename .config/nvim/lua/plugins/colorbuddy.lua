@@ -1,4 +1,4 @@
-local add = MiniDeps.add
-add({
-	source = "tjdevries/colorbuddy.nvim",
-})
+return {
+	"tjdevries/colorbuddy.nvim",
+	lazy = false,
+}

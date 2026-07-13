@@ -1,100 +1,121 @@
--- ~/.config/nvim/lua/plugins/lualine.lua
+local icons = require("config.icons") --icons
+return {
+	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
+	opts = function()
+		return {
+			options = {
+				-- "auto" pulls colors from the active colorscheme instead of a fixed palette,
+				-- so the statusline background always matches your current theme
+				theme = "tokyonight",
+				icons_enabled = true,
+				component_separators = "", -- VSCode uses a flat style, no arrow separators
+				section_separators = "",
+				globalstatus = true, -- single status bar for all windows, like VSCode
+				disabled_filetypes = {
+					statusline = { "dashboard", "alpha", "snacks_dashboard" },
+					winbar = { "dashboard", "alpha", "snacks_dashboard" },
+				},
+			},
 
-local add = MiniDeps.add
+			sections = {
+				-- Left side: branch, git diff, diagnostics, filename
+				lualine_a = {
+					{
+						"branch",
+						icon = {
+							icons.File,
+							color = {
+								fg = "#F14E32",
+							},
+						}, -- git branch icon, shows e.g. " main" / " master"
+					},
+				},
+				lualine_b = {
+					{
+						"diff",
+						symbols = {
+							added = icons.Git.Added,
+							modified = icons.Git.Modified,
+							removed = icons.Git.Modified,
+						},
+					},
+					{
+						"diagnostics",
+						sources = { "nvim_diagnostic" },
+						symbols = {
+							error = icons.Diagnostics.Error,
+							warn = icons.Diagnostics.Warn,
+							info = icons.Diagnostics.Info,
+							hint = icons.Diagnostics.Hint,
+						},
+						-- colored = true (default) gives red for errors, yellow for warnings, etc.
+					},
+				},
+				lualine_c = {
+					{
+						-- file type icon (colored per language) shown right before the filename
+						function()
+							local filename = vim.fn.expand("%:t")
+							if filename == "" then
+								return ""
+							end
+							local devicons_ok, devicons = pcall(require, "nvim-web-devicons")
+							if not devicons_ok then
+								return ""
+							end
+							local icon = devicons.get_icon(filename, vim.fn.expand("%:e"), { default = true })
+							return icon or ""
+						end,
+						color = function()
+							local devicons_ok, devicons = pcall(require, "nvim-web-devicons")
+							if not devicons_ok then
+								return nil
+							end
+							local filename = vim.fn.expand("%:t")
+							local _, icon_color =
+								devicons.get_icon_color(filename, vim.fn.expand("%:e"), { default = true })
+							return { fg = icon_color }
+						end,
+						padding = { left = 1, right = 0 },
+					},
+					{ "filename", path = 1, padding = { left = 1, right = 1 } }, -- relative path, similar to VSCode's tab label
+				},
 
--- Add lualine.nvim and its icon dependency
-add({
-	source = "nvim-lualine/lualine.nvim",
-	depends = { "nvim-tree/nvim-web-devicons" },
-})
+				-- Right side: filetype, line/col, encoding, line ending
+				lualine_x = {
+					{
+						"diagnostics",
+						sources = { "nvim_diagnostic" },
+						sections = { "error", "warn" },
+						symbols = { error = " ", warn = " " },
+						-- colored = true (default) so errors show red and warnings show yellow
+					},
+				},
+				lualine_y = {
+					{ "filetype", icon_only = false, colored = false }, -- e.g. "Lua"
+					{ "encoding", colored = false }, -- e.g. "utf-8"
+					{ "fileformat", colored = false }, -- e.g. "unix" (LF)
+				},
+				lualine_z = {
+					{
+						-- VSCode-style "Ln X, Col Y" indicator
+						function()
+							local line = vim.fn.line(".")
+							local col = vim.fn.col(".")
+							return string.format("Ln %d, Col %d", line, col)
+						end,
+					},
+				},
+			},
 
--- Helper: get diagnostic icons (matches LazyVim's default icons)
-local icons = {
-	diagnostics = {
-		Error = "",
-		Warn = "",
-		Hint = "",
-		Info = "󱆾",
-	},
-	git = {
-		added = " ",
-		modified = " ",
-		removed = " ",
-	},
+			-- Status line shown on inactive windows
+			inactive_sections = {
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = { "location" },
+			},
+
+			extensions = { "nvim-tree", "lazy", "fugitive" },
+		}
+	end,
 }
-
--- Component: show LSP status (LazyVim shows attached LSP clients)
-local function lsp_clients()
-	local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
-	if #buf_clients == 0 then
-		return ""
-	end
-
-	local names = {}
-	for _, client in ipairs(buf_clients) do
-		table.insert(names, client.name)
-	end
-
-	return " " .. table.concat(names, ", ")
-end
-
-require("lualine").setup({
-	options = {
-		theme = "auto", -- automatically match the current colorscheme
-		globalstatus = true, -- single statusline for all windows (LazyVim default)
-		disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
-		component_separators = "",
-		section_separators = { left = "", right = "" },
-	},
-
-	sections = {
-		lualine_a = { "mode" },
-
-		lualine_b = { "branch" },
-
-		lualine_c = {
-			{
-				"diagnostics",
-				symbols = {
-					error = icons.diagnostics.Error,
-					warn = icons.diagnostics.Warn,
-					info = icons.diagnostics.Info,
-					hint = icons.diagnostics.Hint,
-				},
-			},
-			{
-				"filetype",
-				icon_only = true,
-				separator = "",
-				padding = { left = 1, right = 0 },
-			},
-			{ "filename", path = 0, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-		},
-
-		lualine_x = {
-			-- Show attached LSP clients (similar to LazyVim's cmp_lsp component)
-			{ lsp_clients, icon = " " },
-			{
-				"diff",
-				symbols = {
-					added = icons.git.added,
-					modified = icons.git.modified,
-					removed = icons.git.removed,
-				},
-			},
-		},
-
-		lualine_y = {
-			{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-			{ "location", padding = { left = 0, right = 1 } },
-		},
-
-		lualine_z = {
-			function()
-				return " " .. os.date("%R") -- show current time (LazyVim-style clock)
-			end,
-		},
-	},
-
-	extensions = { "neo-tree", "lazy" },
-})
