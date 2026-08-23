@@ -1,3 +1,4 @@
+print("hello Options")
 vim.g.mapleader = " "
 vim.g.maplocalleader = "//"
 
