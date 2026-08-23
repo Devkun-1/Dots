@@ -1,7 +1,9 @@
 local keymap = vim.keymap.set
 
 --- oil
-keymap("n", "<leader>e", "<cmd>Oil<cr>")
+-- keymap("n", "<leader>e", "<cmd>Oil<cr>")
+
+keymap("n", "<leader>e", function() Snacks.picker.explorer() end, { desc = "File Explorer" })
 
 -- split window
 keymap("n", "sv", "<cmd> vsplit <cr>")
@@ -31,5 +33,8 @@ keymap("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
 keymap("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
+-- toggle terminal
+keymap("n", "<leader>ft", "<cmd> ToggleTerm terminal <cr>", { desc = "Toggle Terminal" })
 
 -- 	telescope.diagnostics({ bufnr = 0 })

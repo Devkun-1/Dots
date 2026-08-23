@@ -1,6 +1,7 @@
 require("config.options") -- options
 require("config.keymaps") -- keymaps
 require("config.autocmd") -- autocmd
+
 -- icons
 local icons = require("config.icons")
 
@@ -36,6 +37,7 @@ require("lazy").setup({
 vim.cmd("colorscheme tokyonight-night")
 -- vim.cmd("colorscheme ansi")
 -- vim.cmd("colorscheme zen")
+-- vim.cmd("colorscheme onedarker")
 
 local colorbuddy = require("colorbuddy")
 local styles = colorbuddy.styles
