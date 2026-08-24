@@ -1,4 +1,4 @@
 return {
-	"tjdevries/colorbuddy.nvim",
-	lazy = false,
+  "tjdevries/colorbuddy.nvim",
+  lazy = false,
 }
